@@ -75,9 +75,9 @@ jobs:
         run: |
           set -xe
           python -m pip install --upgrade pip setuptools wheel
-          python -m pip install --upgrade molecule[docker]
+          python -m pip install --upgrade ansible molecule[docker] docker
 
-      - name: Run ansible-test sanity command
+      - name: Run molecule test
         run: molecule -v test
         env:
           PY_COLORS: "1"
