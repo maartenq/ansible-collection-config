@@ -1,5 +1,7 @@
 # Ansible Collection - maartenq.config
 
+![ci](https://github.com/maartenq/ansible-collections-config/actions/workflows/ci.yml/badge.svg)
+
 Ansible Collection for different config related stuff.
 
 
