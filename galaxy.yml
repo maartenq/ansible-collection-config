@@ -1,0 +1,20 @@
+---
+# galaxy.yml
+
+namespace: maartenq
+name: config
+version: 0.0.1
+readme: README.md
+authors:
+  - maartenq
+description: Ansible Collection for different config related stuff.
+license:
+  - MIT
+tags:
+  - configuration
+dependencies: {}
+repository: https://github.com/maartenq/ansible-collection-config
+documentation: https://github.com/maartenq/ansible-collection-config.git
+homepage: https://github.com/maartenq/ansible-collection-config.git
+issues: https://github.com/maartenq/ansible-collection-config/issues
+build_ignore: []

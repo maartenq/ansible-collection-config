@@ -1,0 +1,84 @@
+---
+# .github/workflows/ci.yml
+
+name: ci
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+
+  ansible-test-sanity:
+    name: ansible-test sanity
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ansible_collections/maartenq/config
+
+    steps:
+      - name: Clone the repository
+        uses: actions/checkout@v2
+        with:
+          path: ansible_collections/maartenq/config
+
+      - name: Setup Python 3.10
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10
+
+      - name: Check Python version
+        run: |
+          set -xe
+          python -VV
+          python -m site
+
+      - name: Install dependencies
+        run: |
+          set -xe
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install --upgrade ansible
+
+      - name: Run ansible-test sanity command
+        run: ansible-test sanity -v
+
+  ansible-molecule-role-nvim_packer:
+    name: ansible-molecule role nvim_packer
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ansible_collections/maartenq/config/roles/nvim_packer
+
+    steps:
+      - name: Clone the repository
+        uses: actions/checkout@v2
+        with:
+          path: ansible_collections/maartenq/config
+
+      - name: Setup Python 3.10
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10
+
+      - name: Check Python version
+        run: |
+          set -xe
+          python -VV
+          python -m site
+
+      - name: Install dependencies
+        run: |
+          set -xe
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install --upgrade molecule[docker]
+
+      - name: Run ansible-test sanity command
+        run: molecule -v test
+        env:
+          PY_COLORS: "1"
+          ANSIBLE_FORCE_COLOR: "1"

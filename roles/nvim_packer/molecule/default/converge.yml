@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include nvim_packer"
+      ansible.builtin.include_role:
+        name: "maartenq.config.nvim_packer"

@@ -1,0 +1,6 @@
+---
+# roles/nvim_packer/defaults/main.yml
+
+nvim_packer_repo_url: https://github.com/wbthomason/packer.nvim
+nvim_packer_update: false
+nvim_packer_version: HEAD

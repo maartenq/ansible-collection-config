@@ -1,0 +1,13 @@
+---
+# roles/nvim_packer/vars/main.yml
+
+platform:
+  Darwin:
+    user_dir_mode: "0755"
+    user_file_mode: "0644"
+  ArchLinux:
+    user_dir_mode: "0755"
+    user_file_mode: "0664"
+  RedHat:
+    user_dir_mode: "0775"
+    user_file_mode: "0664"

@@ -1,0 +1,33 @@
+---
+# roles/nvim_packer/molecule/default/verify.yml
+
+- name: Verify
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Test if XGD_DATA_HOME directory is created.
+      block:
+        - name: Set XGD_DATA_HOME from environment or fall back on default.
+          ansible.builtin.set_fact:
+            XGD_DATA_HOME: >-
+              {{
+                ansible_env.XDG_DATA_HOME
+                | default(ansible_env.HOME + "/.local/share")
+              }}
+
+        - name: Test XGD_DATA_HOME directory is created.
+          ansible.builtin.stat:
+            path: "{{ XGD_DATA_HOME }}"
+          register: st
+
+        - name: Assert XGD_DATA_HOME directory is created.
+          ansible.builtin.assert:
+            that: st.stat.exists == true
+
+        - name: Assert XGD_DATA_HOME path is /home/ansible/.local/share
+          ansible.builtin.assert:
+            that: st.stat.path == "/home/ansible/.local/share"
+
+        - name: Assert XGD_DATA_HOME directory mode is 0775 on RedHat
+          ansible.builtin.assert:
+            that: st.stat.mode == "0775"

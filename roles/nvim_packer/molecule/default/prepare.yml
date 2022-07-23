@@ -1,0 +1,13 @@
+---
+- name: Prepare
+  hosts: all
+  vars:
+    platform:
+      Darwin:
+        become: false
+  tasks:
+    - name: Ensure Git is installed
+      become: "{{ platform[ansible_facts.os_family].become | default(True) }}"
+      ansible.builtin.package:
+        name: git
+        state: present
