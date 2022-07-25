@@ -7,7 +7,7 @@ driver:
   name: docker
 platforms:
   - name: ubi8
-    image: quay.io/maartenq/ubi8-systemd-ansible-molecule:latest
+    image: quay.io/maartenq/ansible-molecule-ubi8
     groups:
       - ansible
     override_command: false
@@ -21,33 +21,33 @@ platforms:
     pre_build_image: true
     privileged: true
 
-  # - name: archlinux
-  #   image: quay.io/maartenq/archlinux-systemd-ansible-molecule
-  #   groups:
-  #     - ansible
-  #   tmpfs:
-  #     - /run
-  #     - /tmp
-  #   capabilities:
-  #     - SYS_ADMIN
-  #   volumes:
-  #     - /sys/fs/cgroup:/sys/fs/cgroup:ro
-  #   pre_build_image: true
-  #   privileged: true
+  - name: archlinux
+    image: quay.io/maartenq/ansible-molecule-archlinux
+    groups:
+      - ansible
+    tmpfs:
+      - /run
+      - /tmp
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    pre_build_image: true
+    privileged: true
 
-  # - name: fedora
-  #   image: quay.io/maartenq/fedora-systemd-ansible-molecule
-  #   groups:
-  #     - ansible
-  #   tmpfs:
-  #     - /run
-  #     - /tmp
-  #   capabilities:
-  #     - SYS_ADMIN
-  #   volumes:
-  #     - /sys/fs/cgroup:/sys/fs/cgroup:ro
-  #   pre_build_image: true
-  #   privileged: true
+  - name: fedora
+    image: quay.io/maartenq/ansible-molecule-fedora
+    groups:
+      - ansible
+    tmpfs:
+      - /run
+      - /tmp
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    pre_build_image: true
+    privileged: true
 
 provisioner:
   name: ansible

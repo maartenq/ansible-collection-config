@@ -6,6 +6,14 @@
       Darwin:
         become: false
   tasks:
+    - name: full system upgrade
+      become: true
+      community.general.pacman:
+        update_cache: true
+        upgrade: true
+      when:
+        - ansible_distribution == "Archlinux"
+
     - name: Ensure Git is installed
       become: "{{ platform[ansible_facts.os_family].become | default(True) }}"
       ansible.builtin.package:
