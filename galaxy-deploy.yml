@@ -17,13 +17,12 @@
   gather_facts: false
 
   vars:
-    namespace: maartenq
-    collection: config
     # Requires github_tag to be set when calling playbook.
     release_tag: "{{ github_tag.split('/')[-1] }}"
+    artifact: maarten-config-{{ release_tag }}.tar.gz
 
   pre_tasks:
-    - name: Ensure ANSIBLE_GALAXY_TOKEN is set.
+    - name: Fail if ANSIBLE_GALAXY_TOKEN is NOT set.
       ansible.builtin.fail:
         msg: A valid ANSIBLE_GALAXY_TOKEN must be set.
       when: "lookup('env','ANSIBLE_GALAXY_TOKEN') | length == 0"
@@ -48,13 +47,26 @@
         regexp: "^version:"
         line: 'version: "{{ release_tag }}"'
 
+    - name: Ensure no old artifact
+      ansible.builtin.file:
+        path: "{{ artifact }}"
+        state: absent
+
     - name: Build the collection.
-      ansible.builtin.command: ansible-galaxy collection build
+      ansible.builtin.command:
+        argv:
+          - ansible-galaxy
+          - collection
+          - build
+        creates: "{{ artifact }}"
 
     - name: Publish the collection.
-      ansible.builtin.command: >-
-        ansible-galaxy collection publish
-        ./{{ namespace }}-{{ collection }}-{{ release_tag }}.tar.gz
+      ansible.builtin.command:
+        argv:
+          - ansible-galaxy
+          - collection
+          - publish
+          - "{{ artifact }}"
 
   post_tasks:
     - name: Ensure the ~/.ansible directory does NOT exists.
