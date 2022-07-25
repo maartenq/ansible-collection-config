@@ -9,7 +9,7 @@
       block:
         - name: Set XGD_DATA_HOME from environment or fall back on default.
           ansible.builtin.set_fact:
-            XGD_DATA_HOME: >-
+            xgd_data_home: >-
               {{
                 ansible_env.XDG_DATA_HOME
                 | default(ansible_env.HOME + "/.local/share")
@@ -17,7 +17,7 @@
 
         - name: Test XGD_DATA_HOME directory is created.
           ansible.builtin.stat:
-            path: "{{ XGD_DATA_HOME }}"
+            path: "{{ xgd_data_home }}"
           register: st
 
         - name: Assert XGD_DATA_HOME directory is created.

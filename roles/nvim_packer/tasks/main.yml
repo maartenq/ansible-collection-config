@@ -1,9 +1,9 @@
 ---
 # roles/nvim_packer/tasks/main.yml
 
-- name: Set XGD_DATA_HOME from environment or fall back on default.
+- name: Set xgd_data_home from environment or fall back on default.
   ansible.builtin.set_fact:
-    XGD_DATA_HOME: >-
+    xgd_data_home: >-
       {{
         ansible_env.XDG_DATA_HOME
         | default(ansible_env.HOME + "/.local/share")
@@ -11,14 +11,14 @@
 
 - name: Ensure XGD_DATA_HOME directory is created.
   ansible.builtin.file:
-    path: "{{ XGD_DATA_HOME }}"
+    path: "{{ xgd_data_home }}"
     state: directory
     mode: "{{ platform[ansible_os_family].user_dir_mode }}"
 
 - name: Install nvim packer from Git repo.
   ansible.builtin.git:
     repo: "{{ nvim_packer_repo_url }}"
-    dest: "{{ XGD_DATA_HOME }}/nvim/site/pack/packer/start/packer.nvim"
+    dest: "{{ xgd_data_home }}/nvim/site/pack/packer/start/packer.nvim"
     update: "{{ nvim_packer_update | bool }}"
     depth: 1
     version: "{{ nvim_packer_version }}"
