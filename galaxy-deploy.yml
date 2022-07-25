@@ -18,7 +18,7 @@
 
   vars:
     # Requires github_tag to be set when calling playbook.
-    release_tag: "{{ github_tag.split('/')[-1] }}"
+    release_tag: "{{ github_tag.split('/v')[-1] }}"
     artifact: maarten-config-{{ release_tag }}.tar.gz
 
   pre_tasks:
