@@ -49,7 +49,7 @@
 
     - name: Ensure no old artifact
       ansible.builtin.file:
-        path: "{{ artifact }}"
+        path: ./{{ artifact }}
         state: absent
 
     - name: Build the collection.
@@ -58,7 +58,7 @@
           - ansible-galaxy
           - collection
           - build
-        creates: "{{ artifact }}"
+        creates: ./{{ artifact }}
 
     - name: Publish the collection.
       ansible.builtin.command:
@@ -66,7 +66,7 @@
           - ansible-galaxy
           - collection
           - publish
-          - "{{ artifact }}"
+          - ./{{ artifact }}
 
   post_tasks:
     - name: Ensure the ~/.ansible directory does NOT exists.
