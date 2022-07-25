@@ -37,7 +37,7 @@ jobs:
       - name: Release to Ansible Galaxy.
         run: >-
           ansible-playbook
-          -vv 
+          -v
           -i "localhost,"
           -e "github_tag=${{ github.ref }}"
           galaxy-deploy.yml

@@ -19,7 +19,9 @@
   vars:
     # Requires github_tag to be set when calling playbook.
     release_tag: "{{ github_tag.split('/v')[-1] }}"
-    artifact: maarten-config-{{ release_tag }}.tar.gz
+    namespace: maartenq
+    collection: config
+    artifact: "{{ namespace }}-{{ collection }}-{{ release_tag }}.tar.gz"
 
   pre_tasks:
     - name: Fail if ANSIBLE_GALAXY_TOKEN is NOT set.
@@ -58,7 +60,6 @@
           - ansible-galaxy
           - collection
           - build
-        creates: ./{{ artifact }}
 
     - name: Publish the collection.
       ansible.builtin.command:
