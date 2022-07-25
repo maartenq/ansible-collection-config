@@ -17,4 +17,9 @@ repository: https://github.com/maartenq/ansible-collection-config
 documentation: https://github.com/maartenq/ansible-collection-config.git
 homepage: https://github.com/maartenq/ansible-collection-config.git
 issues: https://github.com/maartenq/ansible-collection-config/issues
-build_ignore: []
+build_ignore:
+  - .github
+  - .gitignore
+  - .pre-commit-config.yaml
+  - ansible.cfg
+  - galaxy-deploy.yml

@@ -220,3 +220,9 @@ tags
 [._]*.un~
 
 # End of https://www.toptal.com/developers/gitignore/api/ansible,python,macos,vim
+
+# added
+ansible.cfg
+*.tar.gz
+
+k

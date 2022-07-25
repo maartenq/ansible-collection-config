@@ -9,7 +9,7 @@ platforms:
   - name: ubi8
     image: quay.io/maartenq/ubi8-systemd-ansible-molecule:latest
     groups:
-      - main
+      - ansible
     override_command: false
     tmpfs:
       - /run
@@ -24,7 +24,7 @@ platforms:
   # - name: archlinux
   #   image: quay.io/maartenq/archlinux-systemd-ansible-molecule
   #   groups:
-  #     - main
+  #     - ansible
   #   tmpfs:
   #     - /run
   #     - /tmp
@@ -38,7 +38,7 @@ platforms:
   # - name: fedora
   #   image: quay.io/maartenq/fedora-systemd-ansible-molecule
   #   groups:
-  #     - main
+  #     - ansible
   #   tmpfs:
   #     - /run
   #     - /tmp
@@ -57,7 +57,7 @@ provisioner:
       bin_ansible_callbacks: true
   inventory:
     group_vars:
-      main:
+      ansible:
         ansible_user: ansible
 verifier:
   name: ansible
