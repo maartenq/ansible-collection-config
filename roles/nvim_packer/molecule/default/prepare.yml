@@ -12,7 +12,7 @@
         update_cache: true
         upgrade: true
       when:
-        - ansible_distribution == "Archlinux"
+        - ansible_os_family == "Archlinux"
 
     - name: Ensure Git is installed
       become: "{{ platform[ansible_facts.os_family].become | default(True) }}"

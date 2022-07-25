@@ -28,6 +28,14 @@
           ansible.builtin.assert:
             that: st.stat.path == "/home/ansible/.local/share"
 
-        - name: Assert XGD_DATA_HOME directory mode is 0775 on RedHat
+        - name: Assert XGD_DATA_HOME directory mode is 0775 on RedHat/Fedora
           ansible.builtin.assert:
             that: st.stat.mode == "0775"
+          when:
+            - ansible_os_family == "RedHat" or ansible_os_family == "Fedora"
+
+        - name: Assert XGD_DATA_HOME directory mode is 0755 on Archlinux
+          ansible.builtin.assert:
+            that: st.stat.mode == "0755"
+          when:
+            - ansible_os_family == "Archlinux"
