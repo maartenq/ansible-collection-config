@@ -14,7 +14,7 @@ python = "^3.11"
 
 [tool.poetry.group.dev.dependencies]
 ansible = "^7.4.0"
-molecule = "^4.0.4"
+molecule = {extras = ["podman"], version = "^4.0.4"}
 
 [tool.poetry_bumpversion.file."galaxy.yml"]
 search = 'version: {current_version}'
