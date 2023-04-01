@@ -6,13 +6,6 @@
       Darwin:
         become: false
   tasks:
-    - name: Install latest archlinux-keyring
-      become: true
-      community.general.pacman:
-        name: archlinux-keyring
-      when:
-        - ansible_os_family == "Archlinux"
-
     - name: Full system upgrade
       become: true
       community.general.pacman:

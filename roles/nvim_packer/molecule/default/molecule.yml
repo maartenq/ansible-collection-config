@@ -7,7 +7,7 @@ driver:
   name: docker
 platforms:
   - name: ubi8
-    image: quay.io/maartenq/ansible-molecule-ubi8
+    image: quay.io/maartenq/ansible-molecule-ubi9
     groups:
       - ansible
     override_command: false
