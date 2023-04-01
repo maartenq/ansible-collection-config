@@ -72,7 +72,7 @@ jobs:
         run: |
           set -xe
           python -m pip install --upgrade pip setuptools wheel
-          python -m pip install --upgrade ansible molecule[docker] docker
+          python -m pip install --upgrade ansible "molecule[podman]"
 
       - name: Run molecule test
         run: molecule -v test
