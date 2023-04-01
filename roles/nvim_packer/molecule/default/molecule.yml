@@ -6,7 +6,7 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: ubi8
+  - name: ubi9
     image: quay.io/maartenq/ansible-molecule-ubi9
     groups:
       - ansible
