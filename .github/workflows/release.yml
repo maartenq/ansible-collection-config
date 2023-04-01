@@ -26,10 +26,10 @@ jobs:
         with:
           path: ansible_collections/maartenq/config
 
-      - name: Set up Python 3.10
+      - name: Set up Python 3.11
         uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
+          python-version: "3.11"
 
       - name: Install Ansible.
         run: pip3 install ansible-core
