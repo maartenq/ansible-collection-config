@@ -10,12 +10,9 @@ platforms:
     image: quay.io/maartenq/ansible-molecule-ubi9
     groups:
       - ansible
-    override_command: false
     tmpfs:
       - /run
       - /tmp
-    capabilities:
-      - SYS_ADMIN
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     pre_build_image: true
@@ -28,8 +25,6 @@ platforms:
     tmpfs:
       - /run
       - /tmp
-    capabilities:
-      - SYS_ADMIN
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     pre_build_image: true
@@ -42,8 +37,6 @@ platforms:
     tmpfs:
       - /run
       - /tmp
-    capabilities:
-      - SYS_ADMIN
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     pre_build_image: true

@@ -57,11 +57,6 @@ jobs:
         with:
           path: ansible_collections/maartenq/config
 
-      - name: Setup Podman
-        run: |
-          sudo apt update
-          sudo apt-get -y install podman
-
       - name: Set up python
         uses: actions/setup-python@v4
         with:
