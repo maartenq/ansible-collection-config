@@ -1,9 +1,10 @@
 ---
 # galaxy.yml
+# vim: ai et ts=2 sw=2 sts=2 ft=yaml fenc=UTF-8
 
 namespace: maartenq
 name: config
-version: 0.0.4
+version: 0.0.5
 readme: README.md
 authors:
   - maartenq
@@ -11,6 +12,7 @@ description: Ansible Collection for different config related stuff.
 license:
   - MIT
 tags:
+  - tools
   - configuration
 dependencies: {}
 repository: https://github.com/maartenq/ansible-collection-config

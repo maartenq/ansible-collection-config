@@ -1,4 +1,4 @@
 ---
 # meta/runtime.yml
 
-requires_ansible: ">=2.10"
+requires_ansible: ">=2.9.10"

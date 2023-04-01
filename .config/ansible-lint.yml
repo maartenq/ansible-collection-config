@@ -1,0 +1,7 @@
+---
+# .config/ansible-lint.yml
+# vim: ai et ts=2 sw=2 sts=2 ft=yaml fenc=UTF-8
+
+warn_list:
+  - galaxy[no-changelog]
+  - galaxy[version-incorrect]
