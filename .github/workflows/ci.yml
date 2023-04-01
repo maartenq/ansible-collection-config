@@ -52,6 +52,11 @@ jobs:
       run:
         working-directory: ansible_collections/maartenq/config/roles/nvim_packer
     steps:
+      - name: Setup Podman
+        run: |
+          sudo apt update
+          sudo apt-get-y install podman
+
       - name: Check out
         uses: actions/checkout@v3
         with:
